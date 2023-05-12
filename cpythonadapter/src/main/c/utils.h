@@ -13,6 +13,7 @@ typedef struct {
     JNIEnv *env;
     jclass cpython_adapter_cls;
     jmethodID handler_mid;
+    jclass symbol_cls;
 } JavaEnvironment;
 
 typedef struct {
