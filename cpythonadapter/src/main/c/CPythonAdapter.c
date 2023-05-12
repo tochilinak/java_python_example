@@ -37,10 +37,16 @@ symbolic_handler(Py_ssize_t n, PyObject *const *args, void *param) {
 
     free(buf);
     jobject java_result = (*env->env)->CallStaticObjectMethod(env->env, env->cpython_adapter_cls, env->handler_mid, cmd, java_args);
-    if (PyUnicode_CompareWithASCIIString(args[0], "LOAD_CONST") == 0 || PyUnicode_CompareWithASCIIString(args[0], "BUILD_LIST") == 0)
-        return Py_None;
 
-    return wrap_java_object(env, java_result);
+    PyObject *result = wrap_java_object(env, java_result);
+
+    if (PyUnicode_CompareWithASCIIString(args[0], "LOAD_CONST") == 0 || PyUnicode_CompareWithASCIIString(args[0], "BUILD_LIST") == 0) {
+        PyObject *list = PyList_New(1);
+        PyList_SetItem(list, 0, result);
+        result = list;
+    }
+
+    return result;
 }
 
 JNIEXPORT void JNICALL
