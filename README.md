@@ -2,7 +2,7 @@
 
 Clone:
 ```
-git clone --recursive-submodules https://github.com/tochilinak/java_python_example
+git clone --recurse-submodules https://github.com/tochilinak/java_python_example
 ```
 
 or:
