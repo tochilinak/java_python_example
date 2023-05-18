@@ -3,7 +3,8 @@ fun main() {
     println(Symbol::class.java.name)
     val lib = CPythonAdapter()
     val code = """
-        print("Hello from Python!", flush=True)
+        import collections
+        print("Hello from Python!", collections.Counter, flush=True)
         def f(x):
             if x == 1:
                 return 1

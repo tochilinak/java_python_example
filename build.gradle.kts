@@ -20,8 +20,19 @@ dependencies {
 
 application {
     mainClass.set("MainKt")
-    //environment("LD_LIBRARY_PATH", "path/to/lib")
     applicationDefaultJvmArgs = listOf("-Djava.library.path=${System.getProperty("java.library.path")}:${project(":cpythonadapter").buildDir}/lib/main/debug")
+}
+
+tasks.run.configure {
+    environment("LD_PRELOAD" to "/home/tochilinak/Documents/projects/utbot/dist_python/my_dist/libpython3.11.so.1.0")
+}
+
+val config = tasks.register("CPythonBuildConfiguration") {
+
+}
+
+val cpython: TaskProvider<Exec> = tasks.register<Exec>("CPythonBuild") {
+    commandLine("echo", "\"!!!!!!!\"")
 }
 
 tasks.test {
@@ -30,6 +41,7 @@ tasks.test {
 
 tasks.classes {
     dependsOn(":cpythonadapter:linkDebug")
+    dependsOn(cpython)
 }
 
 

@@ -5,6 +5,5 @@ pluginManagement {
     }
     
 }
-include("ccode")
 include("cpythonadapter")
 rootProject.name = "native_sample"
