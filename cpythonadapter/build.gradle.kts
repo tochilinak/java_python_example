@@ -50,11 +50,7 @@ library {
         }
 
         compileTask.includes.from("$cpythonBuildPath/include/python3.11")
-        //compileTask.includes.from("$cpythonPath/Include")
-        //compileTask.includes.from("$cpythonPath/Include/cpython")
-
         compileTask.source.from(fileTree("src/main/c"))
-
         compileTask.compilerArgs.addAll(listOf("-x", "c", "-std=c11", "-L$cpythonPath", "-lpython3.11"))
 
         /*val toolChain = binary.toolChain

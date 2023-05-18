@@ -23,3 +23,8 @@ Run:
 ```
 ./gradlew run
 ```
+
+Run Python interpreter:
+```
+./run_cpython.sh
+```
