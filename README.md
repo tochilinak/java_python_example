@@ -18,3 +18,8 @@ Pull changes:
 git pull
 git submodule update --init  # update cpython commit
 ```
+
+Run:
+```
+./gradlew run
+```
