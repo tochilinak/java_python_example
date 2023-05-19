@@ -29,6 +29,7 @@ val configCPython = tasks.register<Exec>("CPythonBuildConfiguration") {
 
 val cpython = tasks.register<Exec>("CPythonBuild") {
     dependsOn(configCPython)
+    inputs.dir(cpythonPath)
     outputs.dirs("$cpythonBuildPath/lib", "$cpythonBuildPath/include", "$cpythonBuildPath/bin")
     workingDir = File(cpythonPath)
     commandLine("make")
